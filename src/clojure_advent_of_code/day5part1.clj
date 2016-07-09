@@ -1,16 +1,8 @@
 (ns clojure-advent-of-code.day5part1
   (require [clojure.string :as str]))
 
-(defn read-in-lines [fname]
-  (with-open [r (clojure.java.io/reader fname)]
-    (doall (line-seq r))))
-
-(def file-input (read-in-lines "resources/day5.txt"))
-
-(def vowels #{\a \e \i \o \u})
-
 (defn convert-to-num [letter]
-  (if (contains? vowels letter) 1 0))
+  (if (contains? #{\a \e \i \o \u} letter) 1 0))
 
 (defn count-vowels [phrase]
   (reduce + (map convert-to-num phrase)))
@@ -29,6 +21,12 @@
     (at-least-three-vowels phrase)
     (has-repeat-letter phrase)
     (has-bad-strings phrase)))
+
+(defn read-in-lines [fname]
+  (with-open [r (clojure.java.io/reader fname)]
+    (doall (line-seq r))))
+
+(def file-input (read-in-lines "resources/day5.txt"))
 
 (defn main []
   (count (filter identity (map check-if-nice file-input))))
