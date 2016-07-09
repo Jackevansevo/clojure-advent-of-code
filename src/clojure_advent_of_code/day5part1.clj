@@ -1,13 +1,13 @@
 (ns clojure-advent-of-code.day5part1
   (require [clojure.string :as str]))
 
-(def file-input (read-in-lines "resources/day5.txt"))
-
-(def vowels #{\a \e \i \o \u})
-
 (defn read-in-lines [fname]
   (with-open [r (clojure.java.io/reader fname)]
     (doall (line-seq r))))
+
+(def file-input (read-in-lines "resources/day5.txt"))
+
+(def vowels #{\a \e \i \o \u})
 
 (defn convert-to-num [letter]
   (if (contains? vowels letter) 1 0))
