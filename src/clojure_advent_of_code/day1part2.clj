@@ -8,12 +8,13 @@
   (if (= input '\) ) -1 1))
 
 ;; Calculate when santa enters the basement
-(defn main
-  ([input] (get-basement-pos input 0 0))
-  ([input lvl pos]
-   (if (not (empty? input))
-     (if (= lvl -1)
-       pos
-       (recur (rest input) (+ lvl (next-floor (first input))) (+ pos 1))))))
+(defn get-basement-pos [input lvl pos]
+  (if (not (empty? input))
+    (if (= lvl -1)
+      pos
+      (recur (rest input) (+ lvl (next-floor (first input))) (+ pos 1)))))
 
-(main input)
+(defn main []
+  (get-basement-pos input 0 0))
+
+(main)

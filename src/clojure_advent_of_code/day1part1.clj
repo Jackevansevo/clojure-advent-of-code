@@ -6,4 +6,3 @@
   (- (get(frequencies input) \() (get(frequencies input) \))))
 
 (main)
-
