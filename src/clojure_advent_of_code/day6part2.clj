@@ -1,4 +1,4 @@
-(ns clojure-advent-of-code.day6part1)
+(ns clojure-advent-of-code.day6part2)
 
 (def grid-size 1000)
 
@@ -10,9 +10,9 @@
 
 (defn convert-inputs [input]
   (case input
-    "toggle" (fn [x] (if (pos? x) 0 1))
-    "turn on" (fn [x] 1)
-    "turn off" (fn [x] 0)
+    "toggle" (fn [x] (+ x 2))
+    "turn on" (fn [x] (inc x))
+    "turn off" (fn [x] (if (pos? x) (- x 1) 0))
     (read-string input)))
 
 (def command-regex
@@ -30,8 +30,7 @@
   (reduce #(update-in % [%2] f) map vals))
 
 (defn update-board [[cmd coords]]
-  (def board (update-vals board coords cmd))
-  (println "Finished Command"))
+  (def board (update-vals board coords cmd)))
 
 (defn -main [& args]
   (println "Starting day6")
