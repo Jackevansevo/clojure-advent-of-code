@@ -1,8 +1,9 @@
-(ns clojure-advent-of-code.day1part1)
+(ns clojure-advent-of-code.day1part1
+  (:require [clojure.string :as str]))
 
-(def input (slurp "resources/day1.txt"))
+(def input (str/trim (slurp "resources/day1.txt")))
 
 (defn main []
-  (- (get(frequencies input) \() (get(frequencies input) \))))
+  (apply + (map (fn [x] (if (= x \() 1 -1))  input)))
 
 (main)
